@@ -10,3 +10,5 @@ if($uri=='/'){
 }elseif ($uri=='/contact'){
     require "controllers/contact.php";
 }
+
+
