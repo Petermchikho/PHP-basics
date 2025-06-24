@@ -1,7 +1,7 @@
 <?php
 require "functions.php";
 require "Database.php";
-//require "router.php";
+require "router.php";
 
 // Connect to the database and execute a query
 
@@ -12,6 +12,8 @@ require "Database.php";
 //dd($posts);
 $config=require "config.php";
 $db = new Database($config['database']);
+
+
 //dd($_GET);
 
 //$posts=$db->query('select * from posts')->fetchAll();
