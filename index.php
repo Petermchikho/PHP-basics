@@ -1,22 +1,28 @@
 <?php
 require "functions.php";
+require "Database.php";
 //require "router.php";
 
+// Connect to the database and execute a query
+
+
 // connect to our MySQL database
-$dsn = 'mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4';
-$pdo=new PDO($dsn, 'root', '2001Pboy@');
 
-$statement=$pdo->prepare('select * from posts');
-
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 //dd($posts);
+$config=require "config.php";
+$db = new Database($config['database']);
+//dd($_GET);
 
-foreach ($posts as $post) {
-    echo "<h1>{$post['title']}</h1>";
-}
+//$posts=$db->query('select * from posts')->fetchAll();
+$post=$db->query("select * from posts where id = :id",['id'=>$_GET['id']])->fetch();
+
+//foreach ($posts as $post) {
+//    echo "<h1>{$post['title']}</h1>";
+//}
+echo "<h1>{$post['title']}</h1>";
+
+dd($_GET['id']);
 
 //class Person{
 //    public $name;
