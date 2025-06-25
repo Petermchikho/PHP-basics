@@ -1,6 +1,7 @@
 <?php
 class Database{
 public $connection;
+public $statement;
 public function  __construct($config)
 {
 
@@ -14,11 +15,26 @@ public function query($sql,$params=[])
 {
 
 
-    $statement=$this->connection->prepare($sql);
+    $this->statement=$this->connection->prepare($sql);
 
-    $statement->execute($params);
+    $this->statement->execute($params);
 
-    return $statement;
+    return $this;
 
+}
+public function get(){
+    return $this->statement->fetchAll();
+}
+public function find(){
+    return $this->statement->fetch(PDO::FETCH_ASSOC);
+
+}
+public function findOrFail(){
+    $result=$this->find();
+    if(! $result){
+        abort(404);
+    }else{
+        return $result;
+    }
 }
 }
