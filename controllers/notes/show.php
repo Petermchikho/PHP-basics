@@ -1,5 +1,5 @@
 <?php
-$config=require "config.php";
+$config= require "config.php";
 $db = new Database($config['database']);
 $heading='Note Page';
 $id=$_GET['id'];
@@ -14,4 +14,4 @@ $currentUserId=1;
 
 authorise($note['user_id']===$currentUserId,Response::FORBIDDEN);
 
-require "views/note.view.php";
+require "views/notes/show.view.php";

@@ -18,14 +18,14 @@ $db = new Database($config['database']);
 //dd($_GET);
 
 //$posts=$db->query('select * from posts')->fetchAll();
-$post=$db->query("select * from posts where id = :id",['id'=>$_GET['id']])->fetch();
+//$post=$db->query("select * from posts where id = :id",['id'=>$_GET['id']])->fetch();
 
 //foreach ($posts as $post) {
 //    echo "<h1>{$post['title']}</h1>";
 //}
-echo "<h1>{$post['title']}</h1>";
+//echo "<h1>{$post['title']}</h1>";
 
-dd($_GET['id']);
+//dd($_GET['id']);
 
 //class Person{
 //    public $name;
